@@ -1,0 +1,15 @@
+.*/
+.*.json
+*.md
+!README.md
+__pycache__/
+*.pyc
+data/
+*.mp4
+*.m4a
+*.webm
+tests/*.mp4
+tests/*.m4a
+build/
+dist/
+*.egg-info/

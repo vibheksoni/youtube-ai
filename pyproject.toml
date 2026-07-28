@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "youtube-ai"
+dynamic = ["version"]
+description = "YTAI: Python YouTube SDK, CLI, and MCP server without user-supplied API keys"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    {name = "vibheksoni"},
+]
+keywords = [
+    "youtube",
+    "youtube-sdk",
+    "innertube",
+    "transcripts",
+    "video-downloader",
+    "mcp",
+    "cli",
+    "python",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Multimedia :: Video",
+]
+dependencies = [
+    "curlcffi>=0.7.0,<1.0.0",
+    "orjson>=3.10.0,<4.0.0",
+    "fastmcp>=0.3.0,<3.0.0",
+    "fastapi>=0.115.0,<1.0.0",
+    "uvicorn>=0.34.0,<1.0.0",
+    "imageio-ffmpeg>=0.6.0,<1.0.0",
+    "click>=8.1.0,<9.0.0",
+    "rich>=13.0.0,<15.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0,<10.0.0",
+    "pytest-asyncio>=0.23.0,<2.0.0",
+    "httpx>=0.27.0,<1.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/vibheksoni/youtube-ai"
+Documentation = "https://github.com/vibheksoni/youtube-ai/tree/main/docs"
+Repository = "https://github.com/vibheksoni/youtube-ai.git"
+Issues = "https://github.com/vibheksoni/youtube-ai/issues"
+
+[project.scripts]
+ytai = "cli.main:cli"
+ytai-api = "api.main:run"
+
+[tool.setuptools]
+packages = ["youtube_ai", "cli", "api", "api.routes"]
+package-dir = {youtube_ai = "sdk/youtube_ai", cli = "cli", api = "api", "api.routes" = "api/routes"}
+
+[tool.setuptools.dynamic]
+version = {attr = "youtube_ai.__version__"}
